@@ -1,0 +1,6 @@
+# python executables
+*.pyc
+
+# folders
+venv/
+__pycache__/

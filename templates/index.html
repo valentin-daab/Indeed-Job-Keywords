@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INDEED Scraper</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <h1>INDEED WEB SCRAPER</h1>
+        <div class="input">
+            <form action="{{ request.path }}" method = "POST">
+                <p>Collez l'URL de l'annonce INDEED</p>
+                <input type="url" id="requested_url" name="requested_url" class="w3-input w3-border" placeholder="https://example.com" pattern="https://.*" required>
+                <button class="w3-btn w3-blue w3-border" type="submit">Scrape<i class="bi bi-search m-2"></i></button>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>
