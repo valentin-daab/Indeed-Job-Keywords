@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INDEED Scraper</title>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -17,10 +18,86 @@
         <div class="input">
             <form action="{{ request.path }}" method = "POST">
                 <p>Collez l'URL de l'annonce INDEED</p>
-                <input type="url" id="requested_url" name="requested_url" class="w3-input w3-border" placeholder="https://example.com" pattern="https://.*" required>
-                <button class="w3-btn w3-blue w3-border" type="submit">Scrape<i class="bi bi-search m-2"></i></button>
+                <input type="url" id="requested_url" name="requested_url" placeholder="https://example.com" pattern="https://.*" required>
+                <button type="submit">Analyser</button>
             </form>
         </div>
+
+        <div class="n-results" style="height: 360px; width: 45%; display:inline-block; margin-top: 5rem;"> 
+            <canvas id="myChart1"></canvas>
+        </div>
+
+        <div class="v-results" style="height: 360px; width: 45%; display:inline-block; margin-top: 5rem;"> 
+            <canvas id="myChart2"></canvas>
+        </div>
+
+            <script>
+
+            // setup
+            const data1 = {
+                labels: {{ n_labels | safe }},
+                        datasets: [
+                            {   
+                                label: "Mots Clés",
+                                data: {{ n_values | safe }},
+                                backgroundColor: ["#BF616A", "#D08770", "#EBCB8B", "#A3BE8C", "#B48EAD"]                                
+                            }
+                        ]
+            };
+
+            const data2 = {
+                labels: {{ v_labels | safe }},
+                        datasets: [
+                            {   
+                                label: "Mots Clés",
+                                data: {{ v_values | safe }},
+                                backgroundColor: ["#BF616A", "#D08770", "#EBCB8B", "#A3BE8C", "#B48EAD"]                                
+                            }
+                        ]
+            };
+
+            // config
+            const config1 = {
+                type: "pie",
+                data: data1,
+                options: {
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: "#ECEFF4"
+                            }
+                        }
+                    }
+                }
+            };
+
+            const config2 = {
+                type: "pie",
+                data: data2,
+                options: {
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: "#ECEFF4"
+                            }
+                        }
+                    }
+                }
+            };
+
+            //render init
+            const myChart1 = new Chart(
+                document.getElementById("myChart1").getContext("2d"),
+                config1
+            );
+
+            const myChart2 = new Chart(
+                document.getElementById("myChart2").getContext("2d"),
+                config2
+            );
+
+            </script>
+
     </main>
 </body>
 
