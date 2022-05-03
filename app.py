@@ -6,7 +6,7 @@ import spacy
 from typing import Counter
 
 app = Flask(__name__)
-app.secret_key = 'dd hh'
+app.secret_key = 'secret_key'
 
 
 @app.route('/', methods=("GET", "POST"), strict_slashes=False)
@@ -49,4 +49,4 @@ def home():
     return render_template("index.html")
 
 if __name__ == "__main__":
-    app.run(debug=True,host='0.0.0.0')
+    app.run()
