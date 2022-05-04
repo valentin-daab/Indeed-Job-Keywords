@@ -8,7 +8,7 @@ L'objectif est d'intégrer ces mots clés dans son CV pour accroître ses chance
 
 ## Démo
 
-[indeed-keyword-scraper.herokuapp.com/](indeed-keyword-scraper.herokuapp.com/)
+[https://indeed-keyword-scraper.herokuapp.com](https://indeed-keyword-scraper.herokuapp.com)
 
 
 ## Langages de programmation
