@@ -20,7 +20,7 @@ def home():
 
             html_content = requests.get(str(req))
             soup = BeautifulSoup(html_content.text, 'html.parser')
-            contents = soup.find(class_ = "jobsearch-jobDescriptionText")
+            contents = soup.find(class_ = "jobDescriptionText")
 
             contents = re.sub('<br/>','. ',str(contents))
             contents = re.sub('<[^<]+?>', ' ', str(contents))
